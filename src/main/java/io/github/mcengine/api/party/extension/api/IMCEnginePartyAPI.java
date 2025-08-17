@@ -3,20 +3,29 @@ package io.github.mcengine.api.party.extension.api;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a party-related DLC module that can be dynamically loaded into the MCEngine.
+ * Represents a Party-based API module that can be dynamically loaded into the MCEngine.
  * <p>
- * Implement this interface to create a plugin extension that hooks into the party system
- * provided by the MCEngine. The implementation should register its functionality within the {@link #onLoad(Plugin)} method.
+ * Implement this interface to provide party-related APIs to the system.
  */
 public interface IMCEnginePartyAPI {
-
     /**
-     * Called when the DLC module is loaded by the engine.
-     * <p>
-     * This method should be used to initialize any resources, register listeners,
-     * or perform setup logic necessary for the plugin extension to function correctly.
+     * Called when the Party API is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance that is providing the context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the API is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Party API instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }

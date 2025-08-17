@@ -3,20 +3,29 @@ package io.github.mcengine.api.party.extension.dlc;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents a DLC module that can be dynamically loaded into the MCEngine party system.
+ * Represents a Party-based DLC module that can be dynamically loaded into the MCEngine.
  * <p>
- * DLC modules typically contain new gameplay content, mechanics, or major feature expansions.
- * Implement this interface to allow your DLC module to be discovered and initialized by the MCEngine.
+ * Implement this interface to integrate downloadable content into the system.
  */
 public interface IMCEnginePartyDLC {
-
     /**
-     * Called when the DLC module is loaded by the MCEngine.
-     * <p>
-     * Use this method to perform any setup or registration logic required
-     * for the DLC to function as intended.
+     * Called when the Party DLC is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance providing context for this DLC module.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the DLC is unloaded or disabled by the engine.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Party DLC instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }

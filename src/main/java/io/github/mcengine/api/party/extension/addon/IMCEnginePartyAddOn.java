@@ -3,21 +3,33 @@ package io.github.mcengine.api.party.extension.addon;
 import org.bukkit.plugin.Plugin;
 
 /**
- * Represents an AddOn module that can be dynamically loaded into the MCEngine party system.
+ * Represents a Party-based AddOn module that can be dynamically loaded into the MCEngine.
  * <p>
- * AddOns extend the functionality of the party system and may provide features such as
- * cosmetic enhancements, special rules, or integrations with other plugins.
- * This interface should be implemented by any AddOn that wishes to be managed by the engine.
+ * Implement this interface to integrate party-related features into the plugin
+ * via the AddOn extension system.
  */
 public interface IMCEnginePartyAddOn {
-
     /**
-     * Called when the AddOn is loaded by the MCEngine.
-     * <p>
-     * Use this method to initialize resources, register event listeners,
-     * commands, or any logic necessary for the AddOn to function.
+     * Called when the Party AddOn is loaded by the engine.
      *
-     * @param plugin The {@link Plugin} instance providing context for this AddOn.
+     * @param plugin The plugin instance providing context.
      */
     void onLoad(Plugin plugin);
+
+    /**
+     * Called when the AddOn is unloaded or disabled by the engine.
+     * <p>
+     * Use this method to release resources, unregister listeners,
+     * or perform any necessary cleanup.
+     *
+     * @param plugin The plugin instance providing context.
+     */
+    void onDisload(Plugin plugin);
+
+    /**
+     * Sets a unique ID for this Party AddOn instance.
+     *
+     * @param id The unique ID assigned by the engine.
+     */
+    void setId(String id);
 }
